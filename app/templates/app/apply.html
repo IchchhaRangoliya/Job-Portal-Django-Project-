@@ -1,0 +1,241 @@
+{% extends 'app/base1.html' %}
+
+{% block content %} 
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    
+
+    
+
+    
+    
+
+</head>
+
+   
+    
+    <!-- Start home -->
+    <section class="bg-half page-next-level"> 
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="text-center text-white">
+                        <h4 class="text-uppercase title mb-4">Candidate Apply Form</h4>
+                        <ul class="page-next d-inline-block mb-0">
+                            <li><a href="index.html" class="text-uppercase font-weight-bold">Home</a></li>
+                            <li>
+                                <span class="text-uppercase text-white font-weight-bold">Candidate Apply Form</span> 
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+    <!-- POST A JOB START -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="rounded shadow bg-white p-4">
+                        <div class="custom-form">
+                            <div id="message3"></div>
+                            {% if user %}
+                            {% if can %}
+                            {% if job %}
+                            <form method="post" action="{% url 'applyjob' pk=job.id %}" name="contact-form" id="contact-form3" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <h4 class="text-dark mb-3">Please Enter Your Details</h4>
+                                {% if msg %}
+                                    
+                                     <center><h4 style="color: green;">{{msg}}</h4></center>
+
+                                {% endif %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Firstname</label>
+                                            <div class="form-button">
+                                                <input type="text" name="firstname" id="" class="form-control resume" value="{{can.firstname}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Lastname</label>
+                                            <div class="form-button">
+                                                <input type="text" name="lastname" id="" class="form-control resume" value="{{can.lastname}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Job Name</label>
+                                            <div class="form-button">
+                                                <input type="text" name="jobname" id="" class="form-control resume" value="{{job.jobname}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">City</label>
+                                            <input id="city" type="text" name="city" class="form-control resume" placeholder="" value="{{can.city}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">State</label>
+                                            <div class="form-button">
+                                                <input id="state" type="text" name="state" class="form-control resume" placeholder="" value="{{can.state}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Minimum Salary</label>
+                                            <input id="min_salary" name="min_salary" type="text" class="form-control resume" placeholder="$8000" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Maximum Salary</label>
+                                            <input id="max_salary" name="max_salary" type="text" class="form-control resume" placeholder="$20000" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Education Level</label>
+                                            <div class="form-button">
+                                                <input type="text" name="education" id="" class="form-control resume" > 
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Year of Experience</label>
+                                            <div class="form-button">
+                                                <input type="text" name="experience" id="" class="form-control resume"> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Website</label>
+                                            <input id="url" type="text" name="website" class="form-control resume" placeholder="" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Email Address</label>
+                                            <input id="email-address" type="text" class="form-control resume" placeholder="" value="{{request.session.email}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Phone Number</label>
+                                            <input id="number" type="text" name="contact" class="form-control resume" placeholder="" value="{{can.contact}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Gender</label>
+                                            <div class="form-button">
+                                                <input type="text" name="gender" id="" class="form-control resume" > 
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+
+                                
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <div class="input-group mt-2 mb-2">
+                                                    <div class="custom-file">
+                                                        <input type="file" name="resume" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
+                                                        <label class="custom-file-label rounded"><i class="mdi mdi-cloud-upload mr-1"></i> Upload Files</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-inline-item">
+                                                <h6 class="text-muted mb-0">Upload Resume </h6>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 mt-2">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                            {% endif %}
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- POST A JOB END -->
+
+   
+
+   
+    
+
+    <!-- javascript -->
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/js/jquery.easing.min.js' %}"></script>
+    <script src="{% static '/js/plugins.js' %}"></script>
+
+    <!-- selectize js -->
+    <script src="{% static '/js/selectize.min.js' %}"></script>
+
+    <script src="{% static '/js/jquery.nice-select.min.js' %}"></script>
+
+    <script src="{% static '/js/app.js' %}"></script>
+
+    
+    
+</html>
+
+{% endblock %}

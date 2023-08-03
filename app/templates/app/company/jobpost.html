@@ -1,0 +1,97 @@
+{% extends 'app/company/base1.html' %}
+{% load static %}
+{% block content %}
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Job Post Form</h3></div>
+                                      {% if msg %}
+
+                                      <h4 style="color: green;">{{msg}}</h4>
+
+                                      {% endif %}
+                                    
+                                    <div class="card-body">
+                                        <form method="post" action="{% url 'jobpost' pk=request.session.id %}" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="text" name="jobname" value="{{jobdetails.jobname}}" />
+                                                <label for="inputEmail">Job Name</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="text" name="companyname" value="{{jobdetails.companyname}}" />
+                                                <label for="inputEmail">Company Name</label>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="inputFirstName" type="text" name="qualification" value="{{jobdetails.qualification}}" />
+                                                        <label for="inputFirstName">Qualification</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input class="form-control" id="inputLastName" type="text" name="experience" value="{{jobdetails.experience}}" />
+                                                        <label for="inputLastName">Experience</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="text" name="responsibilities" value="{{jobdetails.responsibilities}}" />
+                                                <label for="inputEmail">Responsibilities</label>
+                                            </div>
+
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="text" name="jobdescription" value="{{jobdetails.jobdescription}}" />
+                                                <label for="inputEmail">Job Description</label>
+                                            </div>
+
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="text" name="salary" value="{{jobdetails.salarypackage}}" />
+                                                <label for="inputEmail">Salary Package</label>
+                                            </div> 
+
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="email" name="companyemail" value="{{user.email}}" />
+                                                <label for="inputEmail">Email address</label>
+                                            </div>
+                                            
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputPasswordConfirm" type="tel" name="companycontact" value="{{jobdetails.companycontact}}" />
+                                                <label for="inputPasswordConfirm">Contact</label>
+                                            </div>    
+                                            
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="text" name="companyaddress" value="{{jobdetails.companyaddress}}" />
+                                                <label for="inputEmail">Address</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="text" name="location" value="{{jobdetails.location}}" />
+                                                <label for="inputEmail">Location</label>
+                                            </div>
+                                            
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="text" name="website" value="{{jobdetails.companywebsite}}" />
+                                                <label for="inputEmail">Website</label>
+                                            </div>
+
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="file" name="image" id="inputGroupFile01"  value="{{jobdetails.logo}}">
+                                                <label for="inputGroupFile01">Upload Files</label>
+                                            </div>
+                                            
+                                            <div class="mt-4 mb-0">
+                                                
+                                                <button type="submit" class="btn btn-primary btn-block">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{% endblock %}             
